@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from 'axios';
+import Cookies from 'js-cookie'
 
 
 const Login = () => {
@@ -14,6 +15,7 @@ const Login = () => {
     const handleChange = (e) => {
         setData({ ...data, [e.target.name]: e.target.value });
     }
+    const [message, setMessage] = useState("");
 
     async function postData(routeurl) {
         await axios.post(`${URL}${routeurl}`, {
@@ -23,16 +25,31 @@ const Login = () => {
             headers: {
                 'Content-Type': 'application/json'
             }
-        }).then((res)=>{
-            console.log(res)
-            console.log(res.response);
+        }).then((res) => {
+            if (res.status == 201) {
+                Cookies.set("auth-token", res.data.message)
+                alert("Logginin!!")
+                window.location.href = "/admin"
+            } else {
+                window.location.href = "/"
+            }
         })
-        .catch((err)=>{
-            console.log(err.response)
-        })
-
+            .catch((err) => {
+                if (err.status === 500) {
+                    setMessage("Internal server error")
+                } else {
+                    // hard coded, you can chnage if you want
+                    setMessage("Check all the fields")
+                }
+            })
 
     }
+
+    useEffect(() => {
+        if (Cookies.get("auth-token")) {
+            window.location.href = "/admin"
+        }
+    }, [])
 
     const submitData = async () => {
         postData("admin/auth/login")
@@ -40,9 +57,18 @@ const Login = () => {
 
     return (
         <>
-            <input type="text" value={data.email} onChange={handleChange} name="email" placeholder="Email" />
-            <input type="text" value={data.password} onChange={handleChange} name="password" placeholder="password" />
-            <button onClick={submitData}>submit</button>
+            <section className="flex items-center justify-center w-screen h-screen flex-col gap-10">
+                <h2 className="text-4xl font-extrabold text-red ">Login</h2>
+                <input className="text-xl font-normal border border-red outline-none py-1 px-2 text-black" type="text" value={data.email} onChange={handleChange} name="email" placeholder="Email" />
+                <input className="text-xl font-normal border border-red outline-none py-1 px-2 text-black" type="text" value={data.password} onChange={handleChange} name="password" placeholder="password" />
+                {
+                    message &&
+                    <p className="border border-1 border-red py-2 px-5">
+                        {message}
+                    </p>
+                }
+                <button className="border py-2 px-3 border-red rounded-sm bg-gray transition duration-200" onClick={submitData}>submit</button>
+            </section>
         </>
     )
 }
