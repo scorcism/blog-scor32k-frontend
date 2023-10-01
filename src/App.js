@@ -1,8 +1,9 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import AdminHome from './Scenes/Admin/AdminHome'
 import Login from './Scenes/Admin/Login'
-import VisitorHome from './Scenes/Visitors/VisitorHome'
+import VisitorHome from './Scenes/Visitors/pages/VisitorHome'
 import PostBlog from './Scenes/PostBlog'
+import BlogPage from './Scenes/Visitors/pages/BlogPage'
 
 export default function App() {
   return (
@@ -11,8 +12,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<VisitorHome />} />
           <Route path="/admin" element={<AdminHome />} />
-          <Route path="/blog" element={<PostBlog />} />
-
+          <Route path="/blog/:slug" element={<BlogPage />} />
           <Route path="/login" element={<Login />} />
         </Routes>
       </BrowserRouter>
