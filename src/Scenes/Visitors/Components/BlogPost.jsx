@@ -1,10 +1,43 @@
-import { marked } from 'marked'
+import Markdown from 'markdown-to-jsx'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { materialDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { CopyIcon, PasteIcon } from '../../../Icons/icons';
+import { useEffect, useState } from 'react';
 
+
+const Code = ({ children, language }) => {
+
+    const [copied, setCopied] = useState(false);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setCopied(false);
+        }, 1000);
+
+        return () => clearTimeout(timer);
+    }, [copied])
+
+    return (
+        <div className='code relative'>
+            <CopyToClipboard text={children} onCopy={() => setCopied(true)}>
+                <button className='icon copy-icon absolute z-10 top-[1rem] right-[1rem]'>
+                    {copied ? <PasteIcon /> : <CopyIcon />}
+                </button>
+            </CopyToClipboard>
+            <SyntaxHighlighter
+                language={language}
+                style={materialDark}
+            >
+                {children}
+            </SyntaxHighlighter>
+        </div>
+    )
+}
 
 const BlogPost = ({ data }) => {
     let blog = data.getBlog;
 
-    console.log(blog)
 
 
     function convert(str) {
@@ -30,10 +63,19 @@ const BlogPost = ({ data }) => {
                     }
                 </div>
             </div>
-            <div className='bg-gray-700 leading-7 px-3 py-3' dangerouslySetInnerHTML={{
-                __html: marked(blog.blog)
-            }}>
-            </div>
+            <Markdown
+                className="mt-5 "
+                options={{
+                    overrides: {
+                        code: {
+                            component: Code
+                        }
+                    }
+                }}
+            >
+                {blog.blog}
+            </Markdown>
+
 
         </div>
     )

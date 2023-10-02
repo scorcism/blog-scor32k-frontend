@@ -11,7 +11,7 @@ const VisitorHome = () => {
 
     return (
         <div className='bg-[#272829]'>
-            <Title />
+            {/* <Title /> */}
             <Header />
             <Body/>
             <Footer />
