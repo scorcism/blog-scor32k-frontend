@@ -12,7 +12,7 @@ module.exports = {
         wheat: "#EAD7BB"
       },
       fontFamily: {
-        Poppins: ['Poppins', "sans-serif"]
+        Poppins: ['Roboto', 'sans-serif']
       },
       display: ["group-hover"],
     },

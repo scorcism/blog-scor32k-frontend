@@ -1,35 +1,41 @@
-import { useEffect, useState } from "react";
+import { gql, useQuery } from '@apollo/client'
 import { useParams } from "react-router-dom";
 import Header from "../Components/Header";
+import BlogPost from '../Components/BlogPost';
+import Footer from '../Components/Footer';
 
+const query = gql`
+    query GetBlog($slug: String!) {
+        getBlog(slug: $slug) {
+          imgUrl
+          title
+          createdAt
+          tags
+          user {
+            name
+          }
+          blog
+        }
+}`
 
 const BlogPage = () => {
 
-    const params = useParams("slog");
+    const params = useParams("slug");
     const slug = params.slug;
-    console.log(slug)
 
-    const [data, setData] = useState("");
-    const [message, setMessage] = useState("");
+    const { data, loading } = useQuery(query, {
+        variables: { slug }
+    });
 
-    async function getData() {
-        
+    if (loading) {
+        return <h1>Loading!!</h1>
     }
-
-    useEffect(() => {
-        let res = getData();
-        if (res.success) {
-            setData(res.message)
-        } else {
-            setMessage(res.message)
-        }
-    }, [])
-
 
     return (
         <>
             <Header />
-            blog page
+            <BlogPost data={data} />
+            <Footer />
         </>
     )
 }

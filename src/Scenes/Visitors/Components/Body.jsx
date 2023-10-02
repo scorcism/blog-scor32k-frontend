@@ -1,6 +1,6 @@
 import useMediaQuery from "../../../hooks/useMediaQuery";
 import { gql, useQuery } from '@apollo/client'
-import Blog from "./Blog";
+import Blog from "./BlogCard";
 
 const query = gql`
 query scor32kBlogs {

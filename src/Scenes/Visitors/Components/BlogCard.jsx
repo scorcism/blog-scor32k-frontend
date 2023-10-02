@@ -14,7 +14,7 @@ const Blog = ({ data }) => {
         <>
             <article className="flex flex-row border border-black my-5">
                 <div className="w-1/2 flex justify-center items-center">
-                    <Link to={`blog/${data.slug}`}>
+                    <Link target="_blank" to={`blog/${data.slug}`}>
                         <img src={`${data.imgUrl}`} className="object-cover" alt={`${data.slug}`} />
                     </Link>
                 </div>
