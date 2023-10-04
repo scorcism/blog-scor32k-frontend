@@ -1,6 +1,8 @@
 import Cookies from 'js-cookie';
 import { useEffect, useState } from 'react';
 import AddBlog from './Components/AddBlog';
+import AllBlog from './Components/AllBlog';
+import Footer from '../Visitors/Components/Footer';
 
 const AdminHome = () => {
 
@@ -51,9 +53,10 @@ const AdminHome = () => {
                 }
                 {
                     showTables.all &&
-                    <h1>Hello</h1>
+                    <AllBlog />
                 }
             </div>
+            <Footer/>
         </div>
     )
 }

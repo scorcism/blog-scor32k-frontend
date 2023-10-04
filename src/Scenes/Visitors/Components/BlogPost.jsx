@@ -38,8 +38,6 @@ const Code = ({ children, language }) => {
 const BlogPost = ({ data }) => {
     let blog = data.getBlog;
 
-
-
     function convert(str) {
         var date = new Date(str),
             mnth = ("0" + (date.getMonth() + 1)).slice(-2),

@@ -9,7 +9,8 @@ module.exports = {
         black: "#191717",
         white: "#F1EFEF",
         red: "#C70039",
-        wheat: "#EAD7BB"
+        wheat: "#EAD7BB",
+        "blueBlack": "#000033"
       },
       fontFamily: {
         Poppins: ['Roboto', 'sans-serif']
