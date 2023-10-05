@@ -30,6 +30,9 @@ const AdminHome = () => {
             <div className='flex justify-between pt-2 pb-3 px-5 bg-gray-900'>
                 <section className='flex justify-start gap-10 items-center'>
                     <p onClick={() => {
+                        window.location.href = "/"
+                    }} className='cursor-pointer hover:border-b-2 hover:border-red border-b-2 border-gray-900 transition duration-200'>Home</p>
+                    <p onClick={() => {
                         setShowTables({
                             add: true,
                             all: false
@@ -56,7 +59,7 @@ const AdminHome = () => {
                     <AllBlog />
                 }
             </div>
-            <Footer/>
+            <Footer />
         </div>
     )
 }

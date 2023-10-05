@@ -1,4 +1,5 @@
 import { gql, useQuery } from '@apollo/client'
+import Cookies from 'js-cookie';
 
 const query = gql`
 query scor32kBlogs {
@@ -22,13 +23,15 @@ query scor32kBlogs {
 
 const AllBlog = () => {
 
+    let URL = process.env.REACT_APP_BACKEND;
+
     const { data, loading, error } = useQuery(query);
-    console.log(error)
+    // console.log(error)
 
     if (loading) {
         return <h1>Loading!!</h1>
     }
-    console.log(data)
+
     let datas = data.getBlogsAll;
 
     function convert(str) {
@@ -38,10 +41,37 @@ const AllBlog = () => {
         return [date.getFullYear(), mnth, day].join("-");
     }
 
+    const updatePost = (id, state, slug) => {
+        fetch(`${URL}/admin/post/update-status/${id}`, {
+            method: 'PUT',
+            headers: {
+                "Authorization": `Barrer ${Cookies.get("auth-token")}`,
+                'X-Post-State': `${state}`
+            }
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                alert(`${data.message}`)
+                setTimeout(() => {
+                    window.location.href = `/blog/${slug}`
+                }, 1000);
+            })
+            .catch((error) => {
+                alert(`ERROR: ${error.message}`)
+                // setMessage(`${error.message}`)
+                // console.error('Error uploading image:', error);
+            });
+    }
+
+    const updateState = async (id, state, slug) => {
+        updatePost(id, state, slug)
+    }
+
 
     return (
         <>
             <table className="w-full">
+
                 <thead className="bg-blueBlack border-b">
                     {
                         loading &&
@@ -85,9 +115,9 @@ const AllBlog = () => {
                                     -
                                 </td>
                                 <td title={record.title.length > 40 ? record.title : ""} className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                {record.title.length > 40 ? `${record.title.substring(0, 40)}...` : record.title}
+                                    {record.title.length > 40 ? `${record.title.substring(0, 40)}...` : record.title}
                                 </td>
-                                <td title={record.desc.length > 40 ? record.desc : ""}  className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                <td title={record.desc.length > 40 ? record.desc : ""} className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                     {record.desc.length > 40 ? `${record.desc.substring(0, 40)}...` : record.desc}
                                 </td>
                                 <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
@@ -107,7 +137,9 @@ const AllBlog = () => {
                                     {record.user.name}
                                 </td>
                                 <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                    {record.published === true ? "Published" : "Not Published"}
+                                    <button onClick={() => {
+                                        updateState(record.id, record.published, record.slug)
+                                    }} className="border border-gray-700 rounded-base py-[1px] px-[3px] hover:bg-gray-800 hover:text-wheat hover:border-red">{record.published === true ? <h2>Published</h2> : <h2>Not Published</h2>}</button>
                                 </td>
                             </tr>
                         ))
