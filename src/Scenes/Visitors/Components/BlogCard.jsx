@@ -10,6 +10,8 @@ const Blog = ({ data }) => {
         return [date.getFullYear(), mnth, day].join("-");
     }
 
+    
+
     return (
         <>
             <article className="flex flex-row border border-black my-5">

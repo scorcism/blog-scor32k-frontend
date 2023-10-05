@@ -23,11 +23,13 @@ query scor32kBlogs {
 
 const Body = () => {
 
-    const { data, loading } = useQuery(query);
+    const { data, loading, error } = useQuery(query);
 
     if(loading){
         return <h1>Loading!!</h1>
     }
+
+    console.log(error)
 
     let datas = data.getBlogs;
 
