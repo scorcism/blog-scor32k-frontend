@@ -20,10 +20,10 @@ const Blog = ({ data }) => {
                         <img src={`${data.imgUrl}`} className="object-cover" alt={`${data.slug}`} />
                     </Link>
                 </div>
-                <div className="pl-2 flex flex-col justify-evenly w-1/2 bg-gray-800">
-                    <h2 className="text-xl ">{data.title}</h2>
+                <div className="pl-2 flex flex-col justify-evenly w-1/2 bg-gray-800 gap-3">
+                    <h2 className="text-xl font-extrabold">{data.title}</h2>
                     <span className="text-xs border border-red rounded-md px-1 w-1/4 text-center" >{data.user.name}</span>
-                    <p className="text-base text-ellipsis">{data.desc}</p>
+                    <p className="text-base text-ellipsis font-bold">{data.desc}</p>
                     <div className="flex items-center text-sm gap-3">
                         {
                             data.tags && data.tags.map((t) => (
@@ -32,7 +32,7 @@ const Blog = ({ data }) => {
                             ))
                         }
                     </div>
-                    <span className="text-xs text-red mt-2 border border-black rounded-lg px-1 w-1/5 flex items-center justify-center py-1">{convert(Date((data.createdAt * 1000)))}</span>
+                    <span className="text-xs text-red mt-2 border font-extrabold border-black rounded-lg px-1 w-1/5 flex items-center justify-center py-1">{convert(Date((data.createdAt * 1000)))}</span>
                 </div>
             </article>
         </>

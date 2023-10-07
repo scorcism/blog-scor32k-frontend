@@ -6,11 +6,11 @@ const Header = () => {
             <Link to="/">
             <h2 className="font-extrabold text-xl">scor32k</h2>
             </Link>
-            <div className="flex items-center justify-between gap-14">
+            <div className="flex items-center justify-between gap-14 font-bold">
                 <Link to="/">Blogs</Link>
-                <Link to="#">Portfolio</Link>
-                <Link to="#">Links</Link>
-                <Link to="#">Contact</Link>
+                <Link to="https://scor32k.vercel.app/" target="_blank">Portfolio</Link>
+                <Link to="https://scor32k.vercel.app/links" target="_blank">Links</Link>
+                <Link to="mailto:abhishekpathak1720@gmail.com" target="_blank">Contact</Link>
             </div>
         </nav>
     )

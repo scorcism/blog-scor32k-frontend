@@ -7,7 +7,7 @@ import BlogPage from './Scenes/Visitors/pages/BlogPage'
 
 export default function App() {
   return (
-    <div className='scor32k bg-black text-white font-Poppins' >
+    <div className='scor32k bg-black text-white font-Poppins relative' >
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<VisitorHome />} />

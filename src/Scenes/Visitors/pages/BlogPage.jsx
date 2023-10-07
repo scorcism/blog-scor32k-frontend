@@ -28,15 +28,16 @@ const BlogPage = () => {
     });
 
     if (loading) {
-        return <h1>Loading!!</h1>
+        return <h1 className='text-center font-extrabold text-2xl'>Loading!!</h1>
     }
 
     return (
-        <>
+        <div>
+            
             <Header />
             <BlogPost data={data} />
             <Footer />
-        </>
+        </div>
     )
 }
 

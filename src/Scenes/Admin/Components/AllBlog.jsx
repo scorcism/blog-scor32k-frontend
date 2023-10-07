@@ -1,5 +1,6 @@
 import { gql, useQuery } from '@apollo/client'
 import Cookies from 'js-cookie';
+import { useEffect } from 'react';
 
 const query = gql`
 query scor32kBlogs {
@@ -27,6 +28,10 @@ const AllBlog = () => {
 
     const { data, loading, error } = useQuery(query);
     // console.log(error)
+    
+    useEffect(()=>{
+        document.title = "All blogs | scor32k"
+    },[])
 
     if (loading) {
         return <h1>Loading!!</h1>
@@ -67,7 +72,7 @@ const AllBlog = () => {
         updatePost(id, state, slug)
     }
 
-
+    
     return (
         <>
             <table className="w-full">

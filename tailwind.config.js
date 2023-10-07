@@ -15,7 +15,7 @@ module.exports = {
       fontFamily: {
         Poppins: ['Roboto', 'sans-serif']
       },
-      display: ["group-hover"],
+      display: ["group-hover"]
     },
     screens: {
       xs: "480px",

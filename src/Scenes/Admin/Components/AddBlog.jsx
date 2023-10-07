@@ -1,5 +1,5 @@
 import Cookies from "js-cookie";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const own_tags = ["internet", "aws", "docker", "linux", "Kubernetes", "all"]
 
@@ -57,6 +57,10 @@ const AddBlog = () => {
                 // console.error('Error uploading image:', error);
             });
     };
+
+    useEffect(()=>{
+        document.title = "Add Blog | scor32k"
+    })
 
 
     return (

@@ -46,6 +46,7 @@ const Login = () => {
     }
 
     useEffect(() => {
+        document.title = "Login | scor32k"
         if (Cookies.get("auth-token")) {
             window.location.href = "/admin"
         }
@@ -56,18 +57,21 @@ const Login = () => {
     }
 
     return (
-        <>
-            <section className="flex items-center justify-center w-screen h-screen flex-col gap-10">
+        <>  
+            <section className="flex items-center justify-center w-screen h-screen ">
+                <div className=" flex flex-col gap-10 items-center border-2 border-red/50 rounded-xl py-3 px-5">
+
                 <h2 className="text-4xl font-extrabold text-red ">Login</h2>
                 <input className="text-xl font-normal border border-red outline-none py-1 px-2 text-black" type="text" value={data.email} onChange={handleChange} name="email" placeholder="Email" />
-                <input className="text-xl font-normal border border-red outline-none py-1 px-2 text-black" type="text" value={data.password} onChange={handleChange} name="password" placeholder="password" />
+                <input className="text-xl font-normal border border-red outline-none py-1 px-2 text-black" type="password" value={data.password} onChange={handleChange} name="password" placeholder="password" />
                 {
                     message &&
                     <p className="border border-1 border-red py-2 px-5">
                         {message}
                     </p>
                 }
-                <button className="border py-2 px-3 border-red rounded-sm bg-gray transition duration-200" onClick={submitData}>submit</button>
+                <button className="border py-2 px-3 border-red hover:bg-red/70 rounded-sm bg-gray transition duration-200" onClick={submitData}>submit</button>
+                </div>
             </section>
         </>
     )

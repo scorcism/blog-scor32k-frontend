@@ -35,6 +35,60 @@ const Code = ({ children, language }) => {
     )
 }
 
+const H1 = ({ children }) => {
+    return (
+        <>
+            <h1 className='text-[2rem] font-extrabold'>{children}</h1>
+        </>
+    )
+}
+const H2 = ({ children }) => {
+    return (
+        <>
+            <h1 className='' style={{
+                fontSize: "1.5rem",
+                lineHeight: "3.5rem",
+                fontWeight: "600",
+            }}>{children}</h1>
+        </>
+    )
+}
+const H3 = ({ children }) => {
+    return (
+        <>
+            <h1 className='' style={{
+                fontSize: "1.2rem",
+                lineHeight: "3rem",
+                fontWeight: "600",
+            }}>{children}</h1>
+        </>
+    )
+}
+
+const ptag = ({ children }) => {
+    return (
+        <p className='font-xl'>
+            {children}
+        </p>
+    )
+}
+
+const StrongTag   = ({ children }) => {
+    return (
+        <p className='font-bolder'>
+            {children}
+        </p>
+    )
+}
+
+const spanTag   = ({ children }) => {
+    return (
+        <p className='font-bolder'>
+            {children}
+        </p>
+    )
+}
+
 const BlogPost = ({ data }) => {
     let blog = data.getBlog;
 
@@ -45,13 +99,17 @@ const BlogPost = ({ data }) => {
         return [date.getFullYear(), mnth, day].join("-");
     }
 
+    useEffect(() => {
+        document.title = `${blog.title} | scor32k Blog`
+    }, [])
+
     return (
         <div className="flex flex-col md:px-48 xs:px-10 my-5">
             <img src={`${blog.imgUrl}`} alt={`${blog.slug}`} />
             <div className="flex my-1 justify-between">
-                <div className="meta flex gap-3">
+                <div className="meta flex gap-3  font-bold">
                     <span title="author name" className="border mx-2 border-red p-1 rounded-md text-xs ">{blog.user.name}</span>
-                    <span title="publised date" className="border mx-2 border-wheat p-1 rounded-md text-xs ">{convert(Date((blog.createdAt * 1000)))}</span>
+                    <span title="publised date" className="border mx-2 border-wheat p-1 rounded-md text-xs font-bold">{convert(Date((blog.createdAt * 1000)))}</span>
                 </div>
                 <div className="tags flex gap-3" title="tags">
                     {
@@ -67,14 +125,30 @@ const BlogPost = ({ data }) => {
                     overrides: {
                         code: {
                             component: Code
+                        },
+                        h1: {
+                            component: H1
+                        },
+                        p: {
+                            component: ptag
+                        },
+                        h2:{
+                            component: H2
+                        },
+                        h3:{
+                            component: H3
+                        },
+                        strong:{
+                            component: StrongTag
+                        },
+                        span:{
+                            component: spanTag
                         }
                     }
                 }}
             >
                 {blog.blog}
             </Markdown>
-
-
         </div>
     )
 }
