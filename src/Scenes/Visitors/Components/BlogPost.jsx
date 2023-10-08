@@ -19,7 +19,7 @@ const Code = ({ children, language }) => {
     }, [copied])
 
     return (
-        <div className='code relative'>
+        <div className='code relative transition duration-500'>
             <CopyToClipboard text={children} onCopy={() => setCopied(true)}>
                 <button className='icon copy-icon absolute z-10 top-[1rem] right-[1rem]'>
                     {copied ? <PasteIcon /> : <CopyIcon />}

@@ -53,7 +53,7 @@ const Body = () => {
 
 
     return (
-        <section className="flex flex-col md:px-48 xs:px-10 my-5">
+        <section className="flex flex-col md:px-48 xs:px-10 my-5 transition-all duration-500">
             <div className='absoulte top-20 left-5 flex flex-row gap-4'>
                 <h1
                     onClick={() => {
