@@ -14,7 +14,7 @@ export default function App() {
           <Route path="/admin" element={<AdminHome />} />
           <Route path="/blog/:slug" element={<BlogPage />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/*" element={<NotFound />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </div>
