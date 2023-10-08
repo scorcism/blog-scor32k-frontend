@@ -3,6 +3,7 @@ import AdminHome from './Scenes/Admin/AdminHome'
 import Login from './Scenes/Admin/Login'
 import VisitorHome from './Scenes/Visitors/pages/VisitorHome'
 import BlogPage from './Scenes/Visitors/pages/BlogPage'
+import NotFound from './Scenes/Visitors/pages/NotFound'
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
           <Route path="/admin" element={<AdminHome />} />
           <Route path="/blog/:slug" element={<BlogPage />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </div>
