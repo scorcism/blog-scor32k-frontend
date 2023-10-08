@@ -29,7 +29,6 @@ const Body = () => {
         return <h1>Loading!!</h1>
     }
 
-    console.log(error)
 
     let datas = data.getBlogs;
 

@@ -73,7 +73,7 @@ const ptag = ({ children }) => {
     )
 }
 
-const StrongTag   = ({ children }) => {
+const StrongTag = ({ children }) => {
     return (
         <p className='font-bolder'>
             {children}
@@ -81,7 +81,7 @@ const StrongTag   = ({ children }) => {
     )
 }
 
-const spanTag   = ({ children }) => {
+const spanTag = ({ children }) => {
     return (
         <p className='font-bolder'>
             {children}
@@ -105,6 +105,9 @@ const BlogPost = ({ data }) => {
 
     return (
         <div className="flex flex-col md:px-48 xs:px-10 my-5">
+            <h1 onClick={() => {
+                window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+            }} className={`fixed bottom-7 text-wheat/80 hover:text-wheat/90 right-2 font-Poppins font-semibold border border-wheat/40 bg-wheat/10 hover:bg-black/60 transition duration-200 py-1 px-3 rounded cursor-pointer`}>Top</h1>
             <img src={`${blog.imgUrl}`} alt={`${blog.slug}`} />
             <div className="flex my-1 justify-between">
                 <div className="meta flex gap-3  font-bold">
@@ -132,16 +135,16 @@ const BlogPost = ({ data }) => {
                         p: {
                             component: ptag
                         },
-                        h2:{
+                        h2: {
                             component: H2
                         },
-                        h3:{
+                        h3: {
                             component: H3
                         },
-                        strong:{
+                        strong: {
                             component: StrongTag
                         },
-                        span:{
+                        span: {
                             component: spanTag
                         }
                     }

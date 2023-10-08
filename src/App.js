@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import AdminHome from './Scenes/Admin/AdminHome'
 import Login from './Scenes/Admin/Login'
 import VisitorHome from './Scenes/Visitors/pages/VisitorHome'
-import PostBlog from './Scenes/PostBlog'
 import BlogPage from './Scenes/Visitors/pages/BlogPage'
 
 export default function App() {

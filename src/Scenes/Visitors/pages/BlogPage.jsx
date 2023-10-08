@@ -30,7 +30,7 @@ const BlogPage = () => {
     if (loading) {
         return <h1 className='text-center font-extrabold text-2xl'>Loading!!</h1>
     }
-
+    
     return (
         <div>
             
