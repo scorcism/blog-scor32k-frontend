@@ -1,6 +1,9 @@
 import Header from "../Components/Header";
 
 const NotFound = () => {
+
+    document.title = "Not Found Page | scor32k"
+
     return (
         <>
             <Header />
