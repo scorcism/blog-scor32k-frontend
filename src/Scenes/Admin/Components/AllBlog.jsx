@@ -26,7 +26,7 @@ const AllBlog = () => {
 
     let URL = process.env.REACT_APP_BACKEND;
 
-    const { data, loading, error } = useQuery(query);
+    const { data, loading } = useQuery(query);
     // console.log(error)
     
     useEffect(()=>{
@@ -129,7 +129,7 @@ const AllBlog = () => {
                                     Tags
                                 </td>
                                 <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                    <a href={`/blog/${record.slug}`} target='_blank'>Goto</a>
+                                    <a href={`/blog/${record.slug}`} rel="noreferrer" target='_blank'>Goto</a>
 
                                 </td>
                                 <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">

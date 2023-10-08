@@ -1,4 +1,3 @@
-import useMediaQuery from "../../../hooks/useMediaQuery";
 import Blog from "./BlogCard";
 import { useEffect, useState } from 'react';
 import { gql, useQuery } from '@apollo/client'
@@ -33,7 +32,7 @@ const Body = () => {
         document.title = "Blogs | scor32k"
     }, [])
 
-    const { data, loading, error } = useQuery(query);
+    const { data, loading } = useQuery(query);
 
     if (loading) {
         return <h1>Loading!!</h1>
@@ -79,7 +78,7 @@ const Body = () => {
             </div>
             {
                 datas && datas.filter((val) => {
-                    if (searchText == "") {
+                    if (searchText === "") {
                         return val;
                     } else if (val.title.toLowerCase().includes(searchText.toLowerCase())) {
                         return val;

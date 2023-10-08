@@ -8,9 +8,9 @@ const Header = () => {
             </Link>
             <div className="flex items-center justify-between gap-14 font-bold">
                 <Link to="/">Blogs</Link>
-                <Link to="https://scor32k.vercel.app/" target="_blank">Portfolio</Link>
-                <Link to="https://scor32k.vercel.app/links" target="_blank">Links</Link>
-                <Link to="mailto:abhishekpathak1720@gmail.com" target="_blank">Contact</Link>
+                <Link to="https://scor32k.vercel.app/" rel="noreferrer" target="_blank">Portfolio</Link>
+                <Link to="https://scor32k.vercel.app/links" rel="noreferrer" target="_blank">Links</Link>
+                <Link to="mailto:abhishekpathak1720@gmail.com" rel="noreferrer" target="_blank">Contact</Link>
             </div>
         </nav>
     )

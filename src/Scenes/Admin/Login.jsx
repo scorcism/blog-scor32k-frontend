@@ -26,7 +26,7 @@ const Login = () => {
                 'Content-Type': 'application/json'
             }
         }).then((res) => {
-            if (res.status == 201) {
+            if (res.status === 201) {
                 Cookies.set("auth-token", res.data.message)
                 alert("Logginin!!")
                 window.location.href = "/admin"

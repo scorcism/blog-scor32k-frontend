@@ -71,7 +71,7 @@ const AddBlog = () => {
                     {
                         (message && showBox) &&
                         <div className="mb-6 flex flex-row w-full justify-between bg-gray-800 items-center py-1 px-2">
-                            <a target="_blank" href={`/blog/${message}`}>{message}</a>
+                            <a target="_blank" rel="noreferrer" href={`/blog/${message}`}>{message}</a>
                             <p onClick={()=>{
                                 setShowBox(false);
                                 setMessage("")
