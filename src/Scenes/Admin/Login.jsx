@@ -5,7 +5,7 @@ import Cookies from 'js-cookie'
 
 const Login = () => {
 
-    let URL = "http://localhost:8000/api/";
+    let URL = process.env.REACT_APP_BACKEND;
 
     const [data, setData] = useState({
         email: "",
@@ -53,7 +53,7 @@ const Login = () => {
     }, [])
 
     const submitData = async () => {
-        postData("admin/auth/login")
+        postData("/admin/auth/login")
     }
 
     return (
